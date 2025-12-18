@@ -1,0 +1,35 @@
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
+struct ListNode {
+  int val;
+  ListNode *next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+  ListNode* insertGreatestCommonDivisors(ListNode* head)
+  {
+    while (head != nullptr) {
+      cout << head << endl;
+      head = head->next;
+    }
+
+    return head;
+  }
+};
+
+int main()
+{
+  Solution sol;
+  ListNode test1 = ListNode(18);
+  test1.next = new ListNode(6);
+  test1.next->next = new ListNode(10);
+
+  return 0;
+}
