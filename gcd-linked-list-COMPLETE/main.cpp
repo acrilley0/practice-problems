@@ -16,7 +16,7 @@ struct ListNode {
   ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-std::shared_ptr<ListNode> createListSP(vector<int> nums)
+std::shared_ptr<ListNode> createListSP(vector<int> & nums)
 {
   if (nums.empty()) {
     cout << "Got an empty vector" << endl;
@@ -56,16 +56,18 @@ int main()
 {
   Solution sol;
 
-  // Even though this is a raw pointer (because .get() was called on a shared_ptr)
-  // it does need to be manually deleted because the shared_ptr still owns the object
-  // and is responsible for its deletion when it goes out of scope
-  // ListNode *test1 = createList({18, 6, 10, 3}).get();
-  std::shared_ptr<ListNode> test1 = createListSP({18, 6, 10, 3});
-  sol.insertGreatestCommonDivisors(test1);
-  std::shared_ptr<ListNode> head = test1;
+  vector<int> case1 = {18,6,10, 3};
+  std::shared_ptr<ListNode> test1 = createListSP(case1);
+  ListNode *gcd1 = sol.insertGreatestCommonDivisors(test1);
+
+  vector<int> case2 = {7};
+  std::shared_ptr<ListNode> test2 = createListSP(case2);
+  ListNode *gcd2 = sol.insertGreatestCommonDivisors(test2);
+
+  ListNode *head = gcd1;
   while (head != nullptr) {
     cout << head->val << " ";
-    head = head->next;
+    head = head->next.get();
   }
 
   return 0;
