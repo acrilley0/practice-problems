@@ -24,7 +24,7 @@ public:
   std::vector<int> decrypt(std::vector<int>& code, int k) {
     std::vector<int> result(code.size(), 0);
     if (k == 0) {
-      std::fill(code.begin(), code.end(), 0);
+      return result;
     } else if (k > 0) {
       for (int i = 0; i < code.size(); i++) {
         int sum = 0;
